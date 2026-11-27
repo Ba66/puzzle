@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "types": [],
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": [
+    "src/kernel/**/*.ts",
+    "src/director/**/*.ts",
+    "src/apps/registry.ts",
+    "src/apps/*/manifest.ts",
+    "src/apps/pet/brain.ts",
+    "src/apps/pet/dialogue.ts",
+    "src/apps/lockscreen/logic.ts"
+  ]
+}

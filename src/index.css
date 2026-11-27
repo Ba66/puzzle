@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    min-block-size: 100dvh;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .device-stage {
+    background-color: #090b11;
+    background-image:
+      radial-gradient(ellipse at 50% 17%, #253042 0%, transparent 48%),
+      radial-gradient(ellipse at 50% 88%, #151b2a 0%, transparent 48%);
+  }
+
+  .device-bezel {
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .device-screen {
+    container-type: inline-size;
+    background: #080b14;
+  }
+
+  .system-status {
+    height: calc(44px + env(safe-area-inset-top, 0px));
+    padding: env(safe-area-inset-top, 0px) 22px 1px;
+    background: linear-gradient(#06091099, transparent);
+  }
+
+  .lockscreen {
+    background:
+      radial-gradient(ellipse at 50% 39%, #0b1222 0%, #070b16 64%, #050811 100%);
+  }
+
+  .lockscreen-texture {
+    background-image:
+      radial-gradient(circle at 0% 0%, #cbd8ef11 .55px, transparent 1px),
+      radial-gradient(ellipse at 50% 81%, #5674bb13, transparent 54%);
+    background-size: 5px 5px, 100% 100%;
+    mask-image: radial-gradient(ellipse at center, #000 0%, #0009 58%, transparent 100%);
+  }
+
+  .lockscreen-orbit {
+    top: 32%;
+    left: 50%;
+    width: min(87%, 380px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border: 1px solid #889ace0e;
+    border-radius: 50%;
+    background:
+      repeating-radial-gradient(circle, transparent 0 18%, #8fa9e50a 18.2% 18.4%, transparent 18.7% 25%),
+      radial-gradient(circle at 50% 46%, #3352851d 0%, transparent 68%);
+    box-shadow: 0 0 90px #4a699312, inset 0 0 60px #1e31532e;
+    mask-image: linear-gradient(transparent 2%, #000 25%, #000 74%, transparent 100%);
+  }
+
+  .lockscreen-clock {
+    top: max(68px, 19%);
+  }
+
+  .clock-digits {
+    margin: 5px 0 12px;
+    color: #dce5f7;
+    font-size: clamp(3.45rem, 21cqi, 5.75rem);
+    font-weight: 300;
+    line-height: .99;
+    letter-spacing: -.086em;
+    padding-right: .086em;
+    text-shadow: 0 0 30px #a2baf835, 0 2px 1px #040710;
+  }
+
+  .rift {
+    top: max(17px, 5%);
+    transform: translateX(-50%);
+  }
+
+  .rift-cyan { filter: drop-shadow(0 0 4px #22d3ee); }
+  .rift-violet { filter: drop-shadow(0 0 9px #a855f7); }
+
+  .tap-ring {
+    border: 1px solid #a7e9fdc0;
+    box-shadow: 0 0 8px #37cbff70, inset 0 0 6px #4ddcff42;
+  }
+
+  .stuck-slider {
+    width: min(82%, 304px);
+    height: 52px;
+    bottom: calc(max(50px, 7%) + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+
+  .slider-track {
+    border: 1px solid #879abd35;
+    background: linear-gradient(180deg, #182238b0, #101827ba 58%, #0a101cde);
+    box-shadow: inset 0 1px #b4c6eb14, inset 0 -10px 27px #0003, 0 10px 38px #02030990;
+  }
+
+  .stuck-slider:hover .slider-track { border-color: #b0bdd05a; }
+  .stuck-slider:active .slider-puck { color: #fff; }
+
+  .slider-puck {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #96b1d26b;
+    background: linear-gradient(145deg, #465873 0%, #263750 65%, #192538 100%);
+    box-shadow: inset 0 1px 1px #cfdeff46, 0 2px 9px #0207138a;
+  }
+
+  .slider-jam {
+    border: 1px solid #ffb85ba6;
+    background: #f2852914;
+    box-shadow: inset 0 0 19px #fb923c38, 0 0 20px #f9731638;
+  }
+
+  .home-indicator {
+    bottom: calc(11px + env(safe-area-inset-bottom, 0px));
+    width: min(30%, 111px);
+    height: 3px;
+    background: #9aaacc44;
+  }
+
+  .debug-toggle {
+    right: max(12px, env(safe-area-inset-right, 0px));
+    bottom: calc(7px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .debug-drawer {
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    right: max(12px, env(safe-area-inset-right, 0px));
+    bottom: calc(51px + env(safe-area-inset-bottom, 0px));
+    width: min(calc(100% - 24px), 470px);
+    animation: drawer-enter 180ms ease-out both;
+  }
+
+  .debug-card {
+    padding: 12px;
+    border: 1px solid #334155b3;
+    border-radius: 12px;
+    background: #0f172a8c;
+  }
+
+  .debug-section-title {
+    margin-bottom: 10px;
+    color: #e2e8f0;
+    font-size: 12px;
+    font-weight: 650;
+  }
+
+  .debug-pairs {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) minmax(0, 1.6fr);
+    gap: 5px 10px;
+    align-items: baseline;
+    font: 11px var(--font-mono);
+  }
+
+  .debug-pairs dt { color: #94a3b8; }
+  .debug-pairs dd { overflow-wrap: anywhere; color: #c9e7fa; }
+
+  .debug-badge {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 650;
+  }
+
+  .debug-folder::marker { content: ''; }
+  .debug-folder::-webkit-details-marker { display: none; }
+  details[open] > summary > .debug-folder-chevron { transform: rotate(90deg); }
+
+  .pet-kick, .pet-flail, .pet-antenna {
+    transform-origin: 0 0;
+    transform-box: view-box;
+  }
+
+  .pet-kick { animation: pet-kick .18s ease-in-out infinite alternate; }
+  .pet-flail { animation: pet-flail .22s ease-in-out infinite alternate; }
+  .pet-kick-offset, .pet-flail-offset { animation-direction: alternate-reverse; }
+  .pet-antenna { animation: pet-antenna 2.8s ease-in-out infinite alternate; }
+  .pet-antenna-alert { animation-duration: .15s; }
+  .pet-eye-jitter { animation: pet-eye-jitter .19s steps(2, end) infinite; }
+  .pet-eye-spin { animation: pet-eye-spin .85s linear infinite; transform-origin: 0 0; }
+  .pet-eye-spin-reverse { animation-direction: reverse; }
+
+  @media (min-width: 640px) {
+    .device-bezel {
+      width: auto;
+      height: min(92dvh, 840px, (100vw - 36px) * 2.166667);
+      aspect-ratio: 9 / 19.5;
+      padding: 7px;
+      border: 1px solid #748093;
+      border-radius: clamp(22px, 5.5dvh, 49px);
+      background: linear-gradient(145deg, #444c5b, #141821 28%, #292e3a 77%, #505665);
+      box-shadow:
+        0 0 0 2px #0c0f15, 0 0 0 3px #61697773,
+        inset 0 0 0 2px #d3ddff20, inset 0 0 0 5px #0c1015,
+        0 32px 60px #000c, 0 10px 24px #000a;
+    }
+
+    .device-screen {
+      border-radius: clamp(15px, 4.6dvh, 41px);
+      box-shadow: 0 0 0 1px #010206, inset 0 0 0 1px #a2b0cf15;
+    }
+
+    .device-rail i {
+      position: absolute;
+      left: -5px;
+      z-index: 1;
+      width: 4px;
+      border: 1px solid #485262;
+      border-radius: 3px 0 0 3px;
+      background: linear-gradient(90deg, #536074, #151c26);
+    }
+
+    .device-switch { top: 14.5%; height: 3.2%; }
+    .device-volume-up { top: 22.6%; height: 6.3%; }
+    .device-volume-down { top: 30.2%; height: 6.3%; }
+
+    .device-rail .device-power {
+      top: 25.2%;
+      right: -5px;
+      left: auto;
+      height: 9%;
+      border-radius: 0 3px 3px 0;
+      background: linear-gradient(90deg, #141924, #566277);
+    }
+
+    .device-island {
+      width: clamp(20px, 25cqi, 94px);
+      height: 23px;
+      padding-right: 10px;
+      border: 1px solid #11151e;
+      border-radius: 999px;
+      background: #020306;
+      box-shadow: 0 1px 1px #e2e8ff15, inset 0 1px 2px #000;
+    }
+
+    .device-camera {
+      width: 8px;
+      height: 8px;
+      border: 1px solid #202737;
+      border-radius: 50%;
+      background: radial-gradient(circle at 65% 35%, #5963a4 0%, #151d3a 26%, #060913 55%);
+      box-shadow: 0 0 0 1px #000;
+    }
+
+    .debug-toggle { top: 22px; right: 24px; bottom: auto; }
+    .debug-drawer { top: 66px; right: 24px; bottom: 22px; }
+  }
+
+  @media (max-height: 490px) {
+    .lockscreen-clock { top: max(47px, 15%); }
+    .clock-digits { margin-bottom: 6px; font-size: clamp(2.1rem, 17cqi, 3.5rem); }
+    .stuck-slider { height: 42px; bottom: calc(37px + env(safe-area-inset-bottom, 0px)); }
+    .slider-puck { width: 32px; height: 32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pet-kick, .pet-flail, .pet-antenna, .pet-eye-jitter, .pet-eye-spin, .debug-drawer { animation: none; }
+  }
+}
+
+@keyframes drawer-enter {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pet-kick { from { transform: rotate(-34deg); } to { transform: rotate(33deg); } }
+@keyframes pet-flail { from { transform: rotate(-17deg); } to { transform: rotate(21deg); } }
+@keyframes pet-antenna { from { transform: rotate(-5deg); } to { transform: rotate(6deg); } }
+@keyframes pet-eye-jitter { from { transform: translateX(-.7px); } to { transform: translateX(.7px); } }
+@keyframes pet-eye-spin { to { transform: rotate(360deg); } }
